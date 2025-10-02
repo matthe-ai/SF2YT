@@ -1,5 +1,5 @@
 from youtubesearchpython import VideosSearch
-from SF2YT.spotify_songs import get_name_track,get_names_playlist
+from spotify_songs import get_name_track,get_names_playlist
 
 #Using httpx<0.26
 
