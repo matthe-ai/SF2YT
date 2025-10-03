@@ -14,8 +14,8 @@ def get_link(track_id:str)->str:
     data = get_name_track(track_id)
     if not data:
         return "Dados inexistentes"
-    text:str = data[0]+" "+data[1]
     try:
+        text:str = data[0]+" "+data[1]
         search = VideosSearch(query=text,limit=3)
         result_all = search.result()
         for track in result_all['result']:
@@ -39,8 +39,8 @@ def get_links(playlist_id:str)->list:
     all_data = get_names_playlist(playlist_id)
     all_links = []
     for item in all_data:
-        text = item[0]+" "+item[1]
         try:
+            text = item[0]+" "+item[1]
             search = VideosSearch(query=text,limit=3)
             result_all = search.result()
             for track in result_all['result']:

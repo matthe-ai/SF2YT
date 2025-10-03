@@ -1,7 +1,8 @@
-from os import mkdir,path,getcwd
+from os import mkdir,path,getcwd,listdir
 import yt_download_music
 from tqdm import tqdm
 import acquire_links
+from zipfile import ZipFile
 
 keep = "s"
 
@@ -33,4 +34,11 @@ while keep == "s":
             yt_download_music.download_audio(link,music_folder)
     else:
         print("link inválido")
+    compress = input("Deseja comprimir a pasta ? (s/n)\nR: ")
+    if compress.lower() == "s":
+        musics = listdir(music_folder) #list all musics downloaded
+        with ZipFile(folder_name+".zip",'w') as myzip:
+            for music in tqdm(musics,"Comprimindo..."):
+                myzip.write(path.join(folder_name,music))
+    print("Finished...")
     keep = input("Continuar ? (s/n)\nR: ").lower() 
