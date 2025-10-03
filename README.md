@@ -13,3 +13,5 @@ I used only python to construct this and it works actually well, i'm a CS studen
 The inputs are in Portuguese (my mother language) but the documentation of the functions and vars are in English.
 
 If you are seeing this and want to use this code, feel free to use it.
+
+The tracks are going to be downloaded where you execute the main file, remember to put all the files together.

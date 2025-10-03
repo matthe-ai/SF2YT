@@ -15,14 +15,17 @@ def get_link(track_id:str)->str:
     if not data:
         return "Dados inexistentes"
     text:str = data[0]+" "+data[1]
-    search = VideosSearch(query=text,limit=3)
-    result_all = search.result()
-    for track in result_all['result']:
-        title = track['title']
-        link = track['link']
-        if not ("remix" in text.lower() and "remix" in title.lower()):
-            if not ("clipe" in text.lower() and "clipe" in title.lower()):
-                return link
+    try:
+        search = VideosSearch(query=text,limit=3)
+        result_all = search.result()
+        for track in result_all['result']:
+            title = track['title']
+            link = track['link']
+            if not ("remix" in text.lower() and "remix" in title.lower()):
+                if not ("clipe" in text.lower() and "clipe" in title.lower()):
+                    return link
+    except Exception as e:
+        print(f"Não foi possivel conseguir o link/titulo \nErro: {e}")
     return "Resultados inconclusivos/não foi possivel baixar a mesma música"
 
 def get_links(playlist_id:str)->list:
@@ -37,13 +40,17 @@ def get_links(playlist_id:str)->list:
     all_links = []
     for item in all_data:
         text = item[0]+" "+item[1]
-        search = VideosSearch(query=text,limit=3)
-        result_all = search.result()
-        for track in result_all['result']:
-            title = track['title']
-            link = track['link']
-            if not ("remix" in text.lower() and "remix" in title.lower()):
-                if not ("clipe" in text.lower() and "clipe" in title.lower()):
-                    all_links.append(link)
-                    print(f"title: {title} \n link: {link}")
+        try:
+            search = VideosSearch(query=text,limit=3)
+            result_all = search.result()
+            for track in result_all['result']:
+                title = track['title']
+                link = track['link']
+                if not ("remix" in text.lower() and "remix" in title.lower()):
+                    if not ("clipe" in text.lower() and "clipe" in title.lower()):
+                        all_links.append(link)
+                        print(f"title: {title} \n link: {link}")
+                        break
+        except Exception as e:
+            print(f"Não foi possivel conseguir o link/titulo \nErro: {e}")
     return all_links

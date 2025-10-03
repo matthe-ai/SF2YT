@@ -6,11 +6,11 @@ import acquire_links
 keep = "s"
 
 while keep == "s":
-    path_folder = input("Coloque o nome da pasta que deseja salvar as músicas: ")
+    folder_name = input("Coloque o nome da pasta que deseja salvar as músicas: ")
     music_folder = getcwd() #current directory
-    if not path.exists(path.join(music_folder,path_folder)):
-        mkdir(path.join(music_folder,path_folder))
-    music_folder+=path_folder
+    if not path.exists(path.join(music_folder,folder_name)):
+        mkdir(path.join(music_folder,folder_name))
+    music_folder = path.join(music_folder,folder_name)
     link = input("Coloque o link do YT ou Spotify:\nPode ser de musica ou playlist\nR: ")
     if 'youtube' in link:
         if 'playlist' in link:
@@ -33,4 +33,4 @@ while keep == "s":
             yt_download_music.download_audio(link,music_folder)
     else:
         print("link inválido")
-    keep = input("Continuar ? (s/n)").lower() 
+    keep = input("Continuar ? (s/n)\nR: ").lower() 
