@@ -13,7 +13,7 @@ while keep == "s":
         mkdir(path.join(music_folder,folder_name))
     music_folder = path.join(music_folder,folder_name)
     link = input("Coloque o link do YT ou Spotify:\nPode ser de musica ou playlist\nR: ")
-    if 'youtube' in link:
+    if 'youtube' in link or 'youtu.be' in link:
         if 'playlist' in link:
             yt_download_music.download_playlist(link,music_folder)
         else:
