@@ -32,8 +32,7 @@ def get_token(client_id:str=getenv("client_id"),client_secret:str=getenv("client
         token_type = r['token_type']
     else:
         return 'Não foi possível obter o token de acesso'
-    data = (token,token_type)
-    return data
+    return token,token_type
 
 def api_call_playlist(playlist_id:str,off_set:int=0)->dict:
     """
